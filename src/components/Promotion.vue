@@ -61,6 +61,7 @@ export default {
     bottom: 0px;
 }
 
+
 ._quote {
     position: absolute;
     width: calc(512px-200px);
