@@ -3,6 +3,8 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 
+import {createPinia} from "pinia"
+
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
 
@@ -19,3 +21,4 @@ library.add(fas)
 createApp(App)
 .component('font-awesome-icon', FontAwesomeIcon)
 .mount('#app')
+// .use(createPinia());
