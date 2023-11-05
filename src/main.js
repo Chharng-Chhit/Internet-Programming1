@@ -1,9 +1,8 @@
 import './assets/main.css'
 
-import { createApp } from 'vue'
-import App from './App.vue'
-
-import {createPinia} from "pinia"
+import { createApp } from 'vue';
+import App from './App.vue';
+import { createPinia } from "pinia";
 
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -16,9 +15,11 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 
 
 /* add icons to the library */
-library.add(fas)
+library.add(fas);
 
-createApp(App)
-.component('font-awesome-icon', FontAwesomeIcon)
-.mount('#app')
-// .use(createPinia());
+const store = createPinia();
+
+const app = createApp(App);
+app.use(store);
+app.component('font-awesome-icon', FontAwesomeIcon)
+app.mount('#app')
