@@ -41,12 +41,15 @@ export default {
 }
 
 ._promotion {
-    margin: 20px 20px 0 0;
+    /* margin: 20px 20px 0 0; */
     width: 512px;
     height: 300px;
     position: relative;
     border-radius: 10px;
     /* background: #F3E8E8; */
+}
+._promotion:hover{
+    transform: scale(90%);
 }
 
 ._img {

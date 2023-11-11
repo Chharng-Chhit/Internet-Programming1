@@ -43,6 +43,9 @@ export default {
     /* Shadow-1 */
     /* box-shadow: 20px 20px 40px 0px rgba(24, 24, 24, 0.07); */
 }
+.item:hover{
+    transform: scale(90%);
+}
 
 ._title {
     color: var(--NestMart-TextHeading, #253D4E);
