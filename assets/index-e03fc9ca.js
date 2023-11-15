@@ -3764,6 +3764,7 @@ function e4(c, a) {
 const y2 = v9("todo", {
     state: () => ({
       groups: [
+        "All",
         "Milks & Diaries",
         "Coffees & Teas",
         "Pet Foods",
@@ -4022,7 +4023,7 @@ const b9 = U1(V9, [
     ["render", A9],
     ["__scopeId", "data-v-d44d1730"],
   ]),
-  S9 = "/assets/plus-24305cf1.svg";
+  S9 = "./assets/plus-24305cf1.svg";
 const y9 = { name: "ButtonAdd" },
   B0 = (c) => (S4("data-v-f88737a2"), (c = c()), y4(), c),
   w9 = { class: "btn" },
@@ -4256,7 +4257,7 @@ function oc(c, a, e, i, n, r) {
         i1(
           f,
           {
-            feature: "Featured Categories",
+            feature: "Popular Products",
             category: c.groups,
             style: { "margin-top": "50px" },
           },
