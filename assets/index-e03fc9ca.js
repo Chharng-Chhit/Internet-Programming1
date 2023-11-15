@@ -4037,8 +4037,8 @@ const T9 = U1(y9, [
     ["render", B9],
     ["__scopeId", "data-v-f88737a2"],
   ]),
-  F9 = "/assets/star-yellow-c2e90a01.svg",
-  E9 = "/assets/star-white-f4d458f4.svg";
+  F9 = "./assets/star-yellow-c2e90a01.svg",
+  E9 = "./assets/star-white-f4d458f4.svg";
 const O9 = {
     name: "Product",
     components: { AddButton: b9, ButtonAdd: T9 },
