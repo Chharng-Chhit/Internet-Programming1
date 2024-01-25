@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
@@ -39,3 +40,7 @@ Route::delete('/products/{productId}', [ProductController::class, 'destroy']);
 // Category Products routes
 //Route::get('/categories/{categoryId}/products', [CategoryProductController::class, 'index']);
 Route::get('/categories/{categoryId}/products', [CategoryProductController::class, 'index']);
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/verify-otp', [AuthController::class, 'verifyOTP']);
