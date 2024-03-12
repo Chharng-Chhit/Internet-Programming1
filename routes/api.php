@@ -24,18 +24,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Route Categories
 Route::get('/categories', [CategoryController::class, 'index']);
-Route::post('/categories', [CategoryController::class, 'store']);
+Route::middleware('auth:api')->post('/categories', [CategoryController::class, 'store']);
 Route::get('/categories/{categoryId}', [CategoryController::class, 'show']);
-Route::patch('/categories/{categoryId}', [CategoryController::class, 'update']);
-Route::delete('/categories/{categoryId}', [CategoryController::class, 'destroy']);
+Route::middleware('auth:api')->patch('/categories/{categoryId}', [CategoryController::class, 'update']);
+Route::middleware('auth:api')->delete('/categories/{categoryId}', [CategoryController::class, 'destroy']);
 
 // Products routes
 Route::get('/products', [ProductController::class, 'index']);
-Route::post('/products', [ProductController::class, 'store']);
+Route::middleware('auth:api')->post('/products', [ProductController::class, 'store']);
 Route::get('/products/{productId}', [ProductController::class, 'show']);
-Route::patch('/products/{productId}', [ProductController::class, 'update']);
-Route::put('/products/{productId}', [ProductController::class, 'update']);
-Route::delete('/products/{productId}', [ProductController::class, 'destroy']);
+Route::middleware('auth:api')->patch('/products/{productId}', [ProductController::class, 'update']);
+Route::middleware('auth:api')->put('/products/{productId}', [ProductController::class, 'update']);
+Route::middleware('auth:api')->delete('/products/{productId}', [ProductController::class, 'destroy']);
 
 // Category Products routes
 //Route::get('/categories/{categoryId}/products', [CategoryProductController::class, 'index']);
@@ -44,3 +44,7 @@ Route::get('/categories/{categoryId}/products', [CategoryProductController::clas
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/verify-otp', [AuthController::class, 'verifyOTP']);
+
+Route::middleware('auth:api')->get('/test', function(){
+    return "Test page";
+});
