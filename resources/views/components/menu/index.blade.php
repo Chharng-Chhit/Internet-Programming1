@@ -8,7 +8,6 @@
     <div class="content">
         <div class="name">{{$name}}</div>
         <div class="num_item">{{$n_of_products}} items</div>
-
     </div>
 
 </div>

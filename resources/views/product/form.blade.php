@@ -1,49 +1,40 @@
 <x-layout>
-    <form action="/product/store" method="POST" enctype="multipart/form-data" style="width: 50vw">
+    <form action="/product/store" method="POST" enctype="multipart/form-data" style="max-width: 600px; margin: 0 auto; padding: 30px; background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
         @csrf
-        <fieldset style="display: flex; flex-direction:column;  gap: 20px">
-            <legend><h1>Product Form</h1></legend>
-            <div>
-                <label for="name" class="form-label" style="width:15%; padding-right:5%">Name</label>
-                <input type="text" class="form-control" id="name" name="name" style="width:80%">
+        <h1 style="text-align: center; margin-bottom: 30px; font-size: 24px; color: #333;">Add New Product</h1>
+        <div style="margin-bottom: 20px;">
+            <label for="name" class="form-label" style="display: block; margin-bottom: 5px; font-weight: bold;">Name</label>
+            <input type="text" class="form-control" id="name" name="name" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        </div>
+        <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+            <div style="flex: 1;">
+                <label for="pricing" class="form-label" style="display: block; margin-bottom: 5px; font-weight: bold;">Price</label>
+                <input type="number" class="form-control" id="pricing" name="pricing" min="1" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
             </div>
-            <div style="display: flex">
-                <div style="width:50%; padding-right:9%" >
-                    <label for="pricing" class="form-label" style="width:20%; padding-right:13%">Price</label>
-                    <input type="number" class="form-control" id="pricing" name="pricing" min="1"  >
-                </div>
-                <div style="width:50%">
-                    <label for="promotion" class="form-label" style="width:15%; padding-right:5%">Promotion</label>
-                    <input type="number" class="form-control" id="promotion" name="promotion"  >
-                </div>
+            <div style="flex: 1;">
+                <label for="promotion" class="form-label" style="display: block; margin-bottom: 5px; font-weight: bold;">Promotion</label>
+                <input type="number" class="form-control" id="promotion" name="promotion" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
             </div>
-
-            <div>
-                <label class="visually-hidden" for="category" style="width:15%; padding-right:2%">Category</label>
-                <select class="form-select" id="category" name="category"   style="width:25%;">
-                    @foreach ( $categories as $category )
-                        <option value="{{$category->id}}">{{$category->name}}</option>
-                    @endforeach
-
-                </select>
-              </div>
-            <div >
-                <label for="image" class="form-label" style="width:15%; padding-right:5%">Image</label>
-                <input type="file" class="form-control" id="image" name="image">
-            </div>
-            <div style="display: flex;">
-                <p class="form-label" style="width:11.5%;">Description</p>
-                <textarea id="description" name="description" ></textarea>
-            </div>
-
-            <div style="width:100%;display: flex; align-items:center; justify-content:end; gap:10px">
-                <a href="{{route("home")}}"  style="padding:5px 8px; text-decoration: none; background-color: gray; color:white; border:none; border-radius:5px">Cancel</a>
-                <button type="submit" style="padding:7px 10px; text-decoration: none; background-color: blue; color:white; border:none; border-radius:5px">Create</button>
-            </div>
-        </fieldset>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <label class="form-label" style="display: block; margin-bottom: 5px; font-weight: bold;">Category</label>
+            <select class="form-select" id="category" name="category" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                @foreach ($categories as $category)
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <label for="image" class="form-label" style="display: block; margin-bottom: 5px; font-weight: bold;">Image</label>
+            <input type="file" class="form-control" id="image" name="image" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        </div>
+        <div style="margin-bottom: 20px;">
+            <label class="form-label" style="display: block; margin-bottom: 5px; font-weight: bold;">Description</label>
+            <textarea id="description" name="description" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></textarea>
+        </div>
+        <div style="display: flex; justify-content: center;">
+            <a href="{{route("home")}}" style="text-decoration: none; padding: 10px 20px; background-color: #999; color: #fff; border-radius: 5px; margin-right: 5px">Cancel</a>
+            <button type="submit" style="padding: 10px 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Create</button>
+        </div>
     </form>
 </x-layout>
-
-
-
-
