@@ -26,12 +26,14 @@ class ProductController extends Controller
         $description = $request->description;
         $category_id = $request->category_id;
         $images = $request->images;
+        $rating = $request->rating;
 
         $new_product = Product::create([
             'name'=>$name,
             'category_id'=>$category_id,
             'pricing'=>$pricing,
             'description'=>$description,
+            'rating'=>$rating,
         ]);
         return  response()->json(['code'=>200,"message"=>"Product create Successfully",'data'=>$new_product]);
     }

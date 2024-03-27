@@ -32,6 +32,10 @@
             <label class="form-label" style="display: block; margin-bottom: 5px; font-weight: bold;">Description</label>
             <textarea id="description" name="description" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></textarea>
         </div>
+        <div>
+            <label for="form-label">Rating</label>
+            <input type="number" name="rating" id="rating">
+        </div>
         <div style="display: flex; justify-content: center;">
             <a href="{{route("home")}}" style="text-decoration: none; padding: 10px 20px; background-color: #999; color: #fff; border-radius: 5px; margin-right: 5px">Cancel</a>
             <button type="submit" style="padding: 10px 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Create</button>
