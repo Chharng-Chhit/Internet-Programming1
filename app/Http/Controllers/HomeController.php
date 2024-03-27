@@ -36,14 +36,20 @@ class HomeController extends Controller
         $product->pricing            = $request->pricing;
         $product->discount_pricing   = $request->promotion;
         $product->description        = $request->description;
+        $product->rating             = $request->rating;
+        $product->weight             = $request->weight;
 
-        if($request->image){
-            $store_image = $request->file('image')
-                            ->storeAs(
-                                'public/assets', $request->image->getClientOriginalName()
-                            );
+        $currentDateTime = date('Ymd_His');
+        $originalName = $request->image->getClientOriginalName();
+        $extension = $request->image->getClientOriginalExtension();
+        $fileName = $currentDateTime . '_' . $product->name . $extension;
+
+        if ($request->image) {
+            $fileName = $product->name . '_' . $currentDateTime . '.'. $extension;
+
+            $store_image = $request->file('image')->storeAs('public/assets', $fileName);
         }
-        $product->image              = $request->file('image')->getClientOriginalName();
+        $product->image = $product->name . '_' . $currentDateTime . '.'. $extension;
 
         $product->save();
 
