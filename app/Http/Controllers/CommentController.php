@@ -236,7 +236,7 @@ class CommentController extends Controller
 
         return response()->json([
             'comment'         => $comment,
-            'message'        => "all all comments which include topic that each comment is on."
+            'message'        => "all comments which include topic that each comment is on."
         ], Response::HTTP_OK);
 
     }

@@ -17,11 +17,12 @@ class Author extends Model
     public function comments():MorphMany
     {
         return $this->morphMany(Comment::class, 'commentable');
+
     }
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id')->select('id','name');
     }
 
     public function articles():HasMany
@@ -31,6 +32,6 @@ class Author extends Model
 
     public function audiences(): HasManyThrough
     {
-        return $this->hasManyThrough( Audience::class, Article::class, 'author_id', 'id','article_id','id');
+        return $this->hasManyThrough( Audience::class, Article::class, 'author_id', 'article_id');
     }
 }

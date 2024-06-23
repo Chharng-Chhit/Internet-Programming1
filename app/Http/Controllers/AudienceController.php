@@ -48,6 +48,7 @@ class AudienceController extends Controller
 
         $audience = Audience::with(['user'])
         ->where('user_id', $audience->user_id)
+        ->orderBy('id','desc')
         ->first();
 
         return response()->json([
@@ -63,13 +64,12 @@ class AudienceController extends Controller
             ]
         );
 
-        $article = Article::with(['Audiences'])
-        ->select('id','name','author_id')
-        ->where('name', $request->article_name)
-        ->first();
+
+        $articleID = Article::where('name', $request->article_name)->first();
+        $audiences = Audience::with('article')->where('article_id',$articleID->id)->get();
 
         return response()->json([
-            'article'         => $article,
+            'audiences'         => $audiences,
             'message'        => "all audiences of article '".$request->article_name
         ], Response::HTTP_OK);
 
@@ -82,13 +82,21 @@ class AudienceController extends Controller
             ]
         );
 
-        $author = Author::with(['audiences'])
-        ->select('id','name','user_id')
-        ->where('name', $request->author_name)
-        ->first();
+        $audiences = Audience::with('authors')->get();
+
+        $data = [];
+        foreach ($audiences as $audience){
+            foreach($audience->authors as $author){
+                if($author->name == $request->author_name){
+                    array_push($data, $audience);
+                    break;
+                }
+            }
+        }
+
 
         return response()->json([
-            'author'         => $author,
+            'Audience'         => $data,
             'message'        => "all audiences of author ".$request->author_name
         ], Response::HTTP_OK);
 
