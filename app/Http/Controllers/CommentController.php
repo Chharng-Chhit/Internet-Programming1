@@ -176,13 +176,54 @@ class CommentController extends Controller
                 'audience_name'        => 'required'
             ]
         );
-
-        $audience = Audience::with('comments')->select('id','name','article_id','user_id')->where('name',$request->audience_name)->get();
-
+        $audienceID = Audience::select("id")->where('name',$request->audience_name)->first();
+        $comment = Comment::with('commentable')
+        ->where('commentable_type', Audience::class)
+        ->where('commentable_id', $audienceID->id)
+        ->get();
 
         return response()->json([
-            'Audience'         => $audience,
-            'message'        => "all comment of audience '".$request->audience_name
+            'message'        => "all comment of audience '".$request->audience_name,
+            'Comment'         => $comment,
+
+        ], Response::HTTP_OK);
+    }
+
+    public function allCommentsOfAuthor(Request $request){
+        $request->validate(
+            [
+                'author_name'        => 'required'
+            ]
+        );
+        $authorID =Author::select("id")->where('name',$request->author_name)->first();
+        $comment = Comment::with('commentable')
+        ->where('commentable_type', Author::class)
+        ->where('commentable_id', $authorID->id)
+        ->get();
+
+        return response()->json([
+            'message'        => "all comment of Author '".$request->audience_name,
+            'Comment'         => $comment,
+
+        ], Response::HTTP_OK);
+
+    }
+    public function allCommentsOfArticle(Request $request){
+        $request->validate(
+            [
+                'article_name'        => 'required'
+            ]
+        );
+        $articleID = Article::select("id")->where('name',$request->article_name)->first();
+        $comment = Comment::with('commentable')
+        ->where('commentable_type', Article::class)
+        ->where('commentable_id', $articleID->id)
+        ->get();
+
+        return response()->json([
+            'message'        => "all comment of Article '".$request->audience_name,
+            'Comment'         => $comment,
+
         ], Response::HTTP_OK);
 
     }

@@ -14,18 +14,19 @@ class Article extends Model
 {
     use HasFactory;
 
-    public function comments(): MorphMany
-    {
-        return $this->morphMany(Comment::class, 'commentable');
-    }
 
     public function audiences(): HasMany
     {
         return $this->hasMany(Audience::class, 'article_id');
     }
 
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
     public function author(): BelongsTo
     {
-        return $this->belongsTo(Author::class, 'author_id')->select('id','name');
+        return $this->belongsTo(Author::class, 'author_id');
     }
 }

@@ -37,6 +37,8 @@ Route::group(['prefix'=>'comment'],function(){
         Route::post('/toAuthor','addCommentToAuthor');
         Route::post('/toArticle','addCommentToArticle');
         Route::get('/getByAudience','allCommentsOfAudience');
+        Route::get('/getByAuthor','allCommentsOfAuthor');
+        Route::get('/getByArticle','allCommentsOfArticle');
         Route::get('/getWithTopic','allCommentsWithTopic');
     });
 });
